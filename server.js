@@ -4,7 +4,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 
 
-const PORT = 3002;
+const PORT = process.env.PORT || 3002;
 const app = express();
 // this requires the content inside of the models foldr
 const db = require("./models")
@@ -15,10 +15,10 @@ app.use(express.static("public"));
 
 // requires the routes
 app.use(logger("dev"));
-app.use("./routes/htmlRoutes");
-app.use("./routes/apiRoutes");
+app.use(require("./routes/htmlRoutes.js"));
+app.use(require("./routes/apiRoutes.js"));
 
-mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/workout", 
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/agile-fortress", 
 {
   useNewUrlParser: true,
   useUnifiedTopology: true,
