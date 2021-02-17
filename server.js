@@ -15,6 +15,7 @@ app.use(express.static("public"));
 // requires the routes
 app.use(require("./routes/htmlRoutes.js"));
 app.use(require("./routes/apiRoutes.js"));
+
 //helps connect to heroku//
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/agile-fortress", 
 {
