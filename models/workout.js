@@ -1,46 +1,51 @@
+// Require Mongoose
 const mongoose = require("mongoose");
-
+// Save mongoose's ability the create a schema in a variable 
 const Schema = mongoose.Schema;
-
+// Schema for workouts(documents)
 const workoutSchema = new Schema({
   day: {
     type: Date,
-    default: Date.now
+    default: () => new Date(),
   },
   exercises: [
     {
       type: {
         type: String,
         trim: true,
+        
       },
       name: {
         type: String,
         trim: true,
+        
       },
-      duration: Number,
+      duration: {
+        type: Number,
+        
+      },
       weight: {
         type: Number,
-        default: 0
+        
       },
       reps: {
         type: Number,
-        default: 0
+        
       },
       sets: {
         type: Number,
-        default: 0
+        
       },
       distance: {
         type: Number,
-        default: 0
-      }
-    }
+       
+      },
+      calories: {
+        type: Number,
+       
+      },
+    },
   ],
-  totalDuration: {
-    type: Number,
-    default: 0,
-  }
-
 });
 
 const Workout = mongoose.model("Workout", workoutSchema);
